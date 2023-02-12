@@ -1,0 +1,30 @@
+{
+  "name": "http-api-assignment",
+  "version": "1.0.0",
+  "description": "First API Assignment ",
+  "main": "./src/server.js",
+  "engines": {
+    "node": "18.13.0",
+    "npm": "7.0.0"
+  },
+  "scripts": {
+    "start": "node ./src/server.js",
+    "pretest": "eslint ./src --fix",
+    "test": "echo \"Tests Complete\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JonStudentRIT/http-api-assignment.git"
+  },
+  "author": "Jonathan Karcher",
+  "license": "UNLICENCED",
+  "bugs": {
+    "url": "https://github.com/JonStudentRIT/http-api-assignment/issues"
+  },
+  "homepage": "https://github.com/JonStudentRIT/http-api-assignment#readme",
+  "devDependencies": {
+    "eslint": "^8.33.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-plugin-import": "^2.27.5"
+  }
+}

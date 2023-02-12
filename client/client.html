@@ -3,9 +3,41 @@
 <head>
   <title>Our simple HTTP server</title>
   <link rel="stylesheet" type="text/css" href="/style.css">
-  
-  <script>
-
+<script>
+  // output to page
+   const handleResponse = async (response) => {
+    const content = document.querySelector('#content');
+    const type = response.headers.get('Content-Type');
+    const page = document.querySelector('#page');
+    let obj = await response.json();
+    // what was selected
+    let messageOut = `<h1>${page.options[page.selectedIndex].innerHTML}</h1>`;
+    // if the content type was json
+    if (type === 'application/json') {
+        messageOut = messageOut + `<p>Message: ${obj.message}</p>`;
+    // otherwise the content type was xml
+      } else {
+      response = response.responseXML;
+      messageOut = + messageOut + `<p>Message: ${response.querySelector('message').innerHTML}</p>`;
+    }
+    content.innerHTML = messageOut;
+  };
+  const sendFetch = async (url, type) => {
+      // call fetch
+      let response = await fetch(url);
+      // process the response 
+      handleResponse(response);
+    };
+    const init = () => {
+      const sendButton = document.querySelector('#send');
+      // send the currently selected input to be output to the page
+      send.addEventListener('click', () => {
+        const type = document.getElementById('type').value;
+        const url = document.getElementById('page').value;
+        sendFetch(url, type);
+      });
+    };
+    window.onload = init;
   </script>
 </head>
 <body>
